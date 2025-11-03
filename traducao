@@ -1,0 +1,35 @@
+# Instale a biblioteca antes de rodar:
+# pip install deep-translator
+
+from deep_translator import GoogleTranslator
+
+# Texto original
+texto = "Hello, world! How are you today?"
+
+# Dicionário com os idiomas desejados (nome -> código ISO)
+idiomas = {
+    "Português": "pt",
+    "Russo": "ru",
+    "Coreano": "ko",
+    "Inglês": "en",
+    "Espanhol (México)": "es",  # O Google usa 'es' para espanhol geral
+    "Italiano": "it"
+}
+
+print("Texto original:", texto)
+print("-" * 50)
+
+# Traduz para cada idioma da lista
+for nome, codigo in idiomas.items():
+    traducao = GoogleTranslator(source='auto', target=codigo).translate(texto)
+    print(f"{nome}: {traducao}")
+
+
+Texto original: Hello, world! How are you today?
+--------------------------------------------------
+Português: Olá, mundo! Como você está hoje?
+Russo: Привет, мир! Как вы сегодня?
+Coreano: 안녕, 세상! 오늘 기분이 어떠세요?
+Inglês: Hello, world! How are you today?
+Espanhol (México): ¡Hola Mundo! ¿Cómo estás hoy?
+Italiano: Ciao mondo! Come stai oggi?
